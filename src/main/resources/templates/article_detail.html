@@ -1,3 +1,6 @@
-<h2 class="article-title" th:text="${article.title}"></h2>
+<div style="display:flex; align-items:center;">
+    <h2 class="article-title" th:text="${article.title}"></h2>
+    <span class="article-date" style="margin-left:10px;" th:text="${#temporals.format(article.createDate, 'yy.MM.dd HH:mm')}"></span>
+</div>
 <p class="article-content" th:text="${article.content}"></p>
 <button><a href="/article/list" style="display:block; color:inherit; text-decoration:none;">목록</a></button>
