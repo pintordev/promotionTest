@@ -10,7 +10,7 @@
         <td class="article-title" style="text-align:start;">
             <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.title}" style="color:inherit; text-decoration:none;"></a>
         </td>
-        <td class="article-date" style="text-align:center;" th:text="${article.content}"></td>
+        <td class="article-date" style="text-align:center;" th:text="${#temporals.format(article.createDate, 'yy.MM.dd HH:mm')}"></td>
     </tr>
     </tbody>
 </table>
