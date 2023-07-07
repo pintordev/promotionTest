@@ -1,0 +1,13 @@
+<form action="/article/create" th:object=${articleForm} method="post" style="display:flex; flex-direction:column;">
+  <h2>등록하기</h2>
+  <label for="title">제목</label>
+  <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></div>
+  <input type="text" th:field="*{title}">
+  <label for="content">내용</label>
+  <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red;"></div>
+  <textarea th:field="*{content}" cols="30" rows="10"></textarea>
+  <div>
+    <input type="submit" th:value="등록" style="width: 100px;">
+    <button style="width: 100px;"><a href="/article/list" style="display:block; color:inherit; text-decoration:none;">취소</a></button>
+  </div>
+</form>

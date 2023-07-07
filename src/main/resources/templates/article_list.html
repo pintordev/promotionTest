@@ -1,0 +1,17 @@
+<table class="article-list-box">
+    <thead>
+    <tr>
+        <td class="article-title" style="text-align:center;">제목</td>
+        <td class="article-date" style="text-align:center;">작성일</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="article : ${articleList}">
+        <td class="article-title" style="text-align:start;">
+            <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.title}" style="color:inherit; text-decoration:none;"></a>
+        </td>
+        <td class="article-date" style="text-align:center;" th:text="${article.content}"></td>
+    </tr>
+    </tbody>
+</table>
+<button><a href="/article/create" style="display:block; color:inherit; text-decoration:none;">등록</a></button>
