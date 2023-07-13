@@ -1,5 +1,6 @@
 package com.sbs.promotionTest.article;
 
+import com.sbs.promotionTest.user._User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,9 @@ public class Article {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    @ManyToOne
+    private _User author;
 
     @CreatedDate
     private LocalDateTime createDate;

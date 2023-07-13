@@ -1,5 +1,6 @@
 package com.sbs.promotionTest.article;
 
+import com.sbs.promotionTest.user._User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    public List<Article> getList() {
-        return this.articleRepository.findAll();
+    public List<Article> getList(String kw) {
+        return this.articleRepository.findAllByKeyWord(kw);
     }
 
     public Article getArticle(Long id) {
@@ -26,11 +27,22 @@ public class ArticleService {
         }
     }
 
-    public void create(String title, String content) {
+    public void create(String title, String content, _User author) {
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
+        article.setAuthor(author);
         article.setCreateDate(LocalDateTime.now());
         this.articleRepository.save(article);
+    }
+
+    public void modify(Article article, String title, String content) {
+        article.setTitle(title);
+        article.setContent(content);
+        this.articleRepository.save(article);
+    }
+
+    public void delete(Article article) {
+        this.articleRepository.delete(article);
     }
 }

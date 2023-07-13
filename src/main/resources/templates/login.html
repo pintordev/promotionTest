@@ -2,6 +2,7 @@
 <div layout:fragment="content">
   <!-- 구현 시작 -->
   <form th:action="@{/user/login}" method="post" style="display:flex; flex-direction:column; width: 300px;">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     <h2>로그인</h2>
     <label for="nickname">닉네임</label>
     <input type="text" id="nickname", name="nickname">

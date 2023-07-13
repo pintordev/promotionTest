@@ -32,4 +32,13 @@ public class UserService {
         Optional<_User> _user = this.userRepository.findByEmail(email);
         return _user.isPresent();
     }
+
+    public _User getUserByNickName(String nickname) {
+        Optional<_User> _user = this.userRepository.findByNickname(nickname);
+        if (_user.isPresent()) {
+            return _user.get();
+        } else {
+            throw new RuntimeException("user not found");
+        }
+    }
 }
