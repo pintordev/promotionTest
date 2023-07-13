@@ -3,13 +3,13 @@
     <li class="logo-image">
       <a href="/"><img th:src="@{/logo.jpg}" alt=""></a>
     </li>
-    <li>
+    <li sec:authorize="isAnonymous()">
       <a href="/user/login">로그인</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()">
       <a href="/user/logout">로그아웃</a>
     </li>
-    <li>
+    <li sec:authorize="isAnonymous()">
       <a href="/user/signup">회원가입</a>
     </li>
   </ul>

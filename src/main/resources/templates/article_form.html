@@ -1,7 +1,7 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
   <!-- 구현 시작 -->
-  <form action="/article/create" th:object=${articleForm} method="post" style="display:flex; flex-direction:column;">
+  <form action="/article/create" th:object=${articleForm} method="post" style="display:flex; flex-direction:column; width: 600px;">
     <h2>등록하기</h2>
     <label for="title">제목</label>
     <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red;"></div>

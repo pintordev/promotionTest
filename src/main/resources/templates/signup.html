@@ -1,7 +1,25 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
     <!-- 구현 시작 -->
-    회원가입 페이지
+    <form th:action="@{/user/signup}" th:object=${userForm} method="post" style="display:flex; flex-direction:column; width: 300px;">
+        <h2>회원가입</h2>
+        <label for="nickname">닉네임</label>
+        <div th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" style="color:red;"></div>
+        <input type="text" th:field="*{nickname}">
+        <label for="password">비밀번호</label>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;"></div>
+        <input type="password" th:field="*{password}">
+        <label for="passwordConfirm">비밀번호 확인</label>
+        <div th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}" style="color:red;"></div>
+        <input type="password" th:field="*{passwordConfirm}">
+        <label for="email">이메일</label>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></div>
+        <input type="email" th:field="*{email}">
+        <div>
+            <input type="submit" th:value="회원가입" style="width: 100px;">
+            <button style="width: 100px;"><a href="/" style="display:block; color:inherit; text-decoration:none;">취소</a></button>
+        </div>
+    </form>
     <!-- 구현 끝 -->
 </div>
 </html>
