@@ -40,16 +40,18 @@ public class ArticleController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
-    public String createArticle(ArticleForm articleForm) {
+    public String createArticle(Model model, ArticleForm articleForm) {
+        model.addAttribute("type", "등록하기");
         return "article_form";
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public String createArticle(Principal principal,
+    public String createArticle(Model model, Principal principal,
                                 @Valid ArticleForm articleForm, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("type", "등록하기");
             return "article_form";
         }
 
@@ -61,10 +63,13 @@ public class ArticleController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
-    public String modifyArticle(@PathVariable("id") Long id, Principal principal,
+    public String modifyArticle(Model model, @PathVariable("id") Long id, Principal principal,
                                 ArticleForm articleForm) {
 
+        model.addAttribute("type", "수정하기");
+
         Article article = this.articleService.getArticle(id);
+        model.addAttribute("article", article);
 
         if (!article.getAuthor().getNickname().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한이 없습니다.");
@@ -78,7 +83,7 @@ public class ArticleController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{id}")
-    public String modifyArticle(@PathVariable("id") Long id, Principal principal,
+    public String modifyArticle(Model model, @PathVariable("id") Long id, Principal principal,
                                 @Valid ArticleForm articleForm, BindingResult bindingResult) {
 
         Article article = this.articleService.getArticle(id);
@@ -88,6 +93,8 @@ public class ArticleController {
         }
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("article", article);
+            model.addAttribute("type", "수정하기");
             return "article_form";
         }
 
