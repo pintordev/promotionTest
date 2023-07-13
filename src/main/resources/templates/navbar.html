@@ -1,0 +1,16 @@
+<nav th:fragment="navbarFragment" class="navigation-bar">
+  <ul>
+    <li class="logo-image">
+      <a href="/"><img th:src="@{/logo.jpg}" alt=""></a>
+    </li>
+    <li>
+      <a href="/user/login">로그인</a>
+    </li>
+    <li>
+      <a href="/user/logout">로그아웃</a>
+    </li>
+    <li>
+      <a href="/user/signup">회원가입</a>
+    </li>
+  </ul>
+</nav>
