@@ -1,7 +1,17 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
   <!-- 구현 시작 -->
-  로그인 페이지
+  <form th:action="@{/user/login}" method="post" style="display:flex; flex-direction:column; width: 300px;">
+    <h2>로그인</h2>
+    <label for="nickname">닉네임</label>
+    <input type="text" id="nickname", name="nickname">
+    <label for="password">비밀번호</label>
+    <input type="password" id="password", name="password">
+    <div>
+      <input type="submit" th:value="로그인" style="width: 100px;">
+      <button style="width: 100px;"><a href="/" style="display:block; color:inherit; text-decoration:none;">취소</a></button>
+    </div>
+  </form>
   <!-- 구현 끝 -->
 </div>
 </html>
